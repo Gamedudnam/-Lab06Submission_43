@@ -95,6 +95,8 @@ class checknumber:
                 else :
                     if event.unicode.isdigit():
                         self.text += event.unicode
+                    else:
+                        self.text += ''
                 # Re-render the text.
                 self.txt_surface = FONT.render(self.text, True, self.color)
 
@@ -117,7 +119,7 @@ win_x, win_y = 800, 480
 screen = pg.display.set_mode((win_x, win_y))
 
 
-COLOR_INACTIVE = pg.Color('lightskyblue3') # ตั้งตัวแปรให้เก็บค่าสี เพื่อนำไปใช้เติมสีให้กับกล่องข้อความตอนที่คลิกที่กล่องนั้นๆอยู่
+COLOR_INACTIVE = pg.Color('#DC143C') # ตั้งตัวแปรให้เก็บค่าสี เพื่อนำไปใช้เติมสีให้กับกล่องข้อความตอนที่คลิกที่กล่องนั้นๆอยู่
 COLOR_ACTIVE = pg.Color('dodgerblue2')     # ^^^
 FONT = pg.font.Font(None, 32)
 
@@ -170,11 +172,16 @@ while run:
     if btn.isMousekang():
         btn.c = (250,0,0)
         font3 = pg.font.Font('freesansbold.ttf', 25) # font and fontsize
-        text3 = font3.render('Hello'+' '+ str(input_box1.text)+ '  ' + str(input_box2.text) + ' ' + ",You are" + ' ' + str(input_box3.text)+ ' ' + "years old.", True, (0,145,122)) # (text,is smooth?,letter color,background color)
+        text3 = font3.render('Hello'+' '+ str(input_box1.text)+ '  ' + str(input_box2.text)+ '!' + ' ' + ",You are" + ' ' + str(input_box3.text)+ ' ' + "years old.", True, (0,145,122)) # (text,is smooth?,letter color,background color)
         textRect3 = text3.get_rect() # text size
         textRect3.center = (350, 450)
         screen.blit(text3, textRect3)
-        
+    if btn.isMousekang()==False:
+        font5 = pg.font.Font('freesansbold.ttf', 35) # font and fontsize
+        text5 = font5.render('Fill in please', True, (255,20,147)) # (text,is smooth?,letter color,background color)
+        textRect5 = text5.get_rect() # text size
+        textRect5.center = (600, 80)
+        screen.blit(text5, textRect5)
     for box in input_boxes: # ทำการเรียก InputBox ทุกๆตัว โดยการ Loop เข้าไปยัง list ที่เราเก็บค่า InputBox ไว้
         box.update() # เรียกใช้ฟังก์ชัน update() ของ InputBox
         box.draw(screen) # เรียกใช้ฟังก์ชัน draw() ของ InputBox เพื่อทำการสร้างรูปบน Screen
