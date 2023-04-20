@@ -36,9 +36,6 @@ while(run):
         btn.c = (192,192,192)
     if btn.isMousekang():
         btn.c = (128,0,128)
-    else:
-        btn.w = 100
-        btn.h = 100
     btn.draw(screen)
 
     
