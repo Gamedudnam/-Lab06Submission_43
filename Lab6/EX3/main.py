@@ -167,19 +167,24 @@ run = True
 win_x, win_y = 800, 480
 screen = pg.display.set_mode((win_x, win_y))
 btn = Button(550,330,200,70)
+submit = False
 
 while run:
     screen.fill((173,216,230))
     # screen.blit(imp, (400, 0))
     btn.c = (0,0,255)
     if btn.isMousekang():
+        submit = True
         btn.c = (250,0,0)
+    if submit == True:
         font3 = pg.font.Font('freesansbold.ttf', 25) # font and fontsize
         text3 = font3.render('Hello'+' '+ str(input_box1.text)+ '  ' + str(input_box2.text)+ '!' + ' ' + ",You are" + ' ' + str(input_box3.text)+ ' ' + "years old.", True, (0,145,122)) # (text,is smooth?,letter color,background color)
         textRect3 = text3.get_rect() # text size
         textRect3.center = (350, 450)
         screen.blit(text3, textRect3)
     if btn.isMousekang()==False:
+        submit == False
+    if submit == False:
         font5 = pg.font.Font('freesansbold.ttf', 35) # font and fontsize
         text5 = font5.render('Fill in please', True, (255,20,147)) # (text,is smooth?,letter color,background color)
         textRect5 = text5.get_rect() # text size
